@@ -5,25 +5,25 @@ const Schema = mongoose.Schema;
 const bookModel = new Schema({
     title: {
         type: String,
-        trim: true
+        // trim: true
         // required: "Username is Required"
     },
 
     authors: {
         type: String,
-        trim: true
+        // trim: true
         // required: "Password is Required",
         // validate: [({ length }) => length >= 6, "Password should be longer."]
     },
 
     description: {
         type: String,
-        unique: true
+        // unique: true
         // match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
     },
 
     image: {
-        type: String,
+        type: Object,
         // default: Date.now
     }
 });

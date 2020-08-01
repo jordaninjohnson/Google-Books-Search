@@ -9,7 +9,7 @@ class Search extends Component {
             <div className="container">
                 <form>
                     <div className="form-group">
-                        <label for="bookSearch">Book Search</label>
+                        <label htmlFor="bookSearch">Book Search</label>
                         <input type="title" className="form-control" id="titleSearch" aria-describedby="title" />
                         <small id="titleHelp" className="form-text text-muted">Enter a book title.</small>
                     </div>
