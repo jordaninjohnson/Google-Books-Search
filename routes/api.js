@@ -4,7 +4,7 @@ const Book = require("../bookModel");
 router.get("/add", (req, res) => {
     Book.find({})
         .then(dbBook => {
-            console.log(dbBook);
+            // console.log(dbBook);
             res.json(dbBook);
         })
         .catch(err => {
@@ -13,18 +13,20 @@ router.get("/add", (req, res) => {
 });
 
 router.route('/add').post((req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     const id = req.body._id
     const title = req.body.volumeInfo.title
     const authors = req.body.volumeInfo.authors[0]
     const description = req.body.volumeInfo.description
     const image = req.body.volumeInfo.imageLinks.thumbnail
+    const link = req.body.volumeInfo.infoLink
     const newBook = new Book({
         id,
         title,
         authors,
         description,
-        image
+        image,
+        link
     });
 
     newBook.save()

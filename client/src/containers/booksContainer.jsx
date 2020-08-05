@@ -14,6 +14,19 @@ class BooksContainer extends Component {
         arrayLength: null
     }
 
+    componentDidMount() {
+        if (this.state.arrayLength < 10) {
+            API.getBooks()
+                .then(response => {
+                    // console.log(response);
+                    this.setState({
+                        books: response.data.items,
+                        arrayLength: response.data.items.length
+                    })
+                });
+        }
+    }
+
     componentDidUpdate() {
         if (this.state.arrayLength < 10) {
             API.getBooks(this.state.searchedTitle)
@@ -27,9 +40,13 @@ class BooksContainer extends Component {
         }
     }
 
+    componentWillUnmount() {
+        this.mounted = false;
+    }
+
 
     bookSelectedHandler = (book) => {
-        console.log(book);
+        // console.log(book);
         this.setState({ selectedBook: book });
 
         // let bookObj = {
@@ -45,8 +62,20 @@ class BooksContainer extends Component {
 
     handleInputChange = event => {
         this.setState({ searchedTitle: event.target.value });
-        console.log(this.state);
+        // console.log(this.state);
     };
+
+    submitSearch = (event) => {
+        event.preventDefault();
+        API.getBooks(this.state.searchedTitle)
+            .then(response => {
+                // console.log(response);
+                this.setState({
+                    books: response.data.items,
+                    arrayLength: response.data.items.length
+                })
+            });
+    }
 
     render() {
         const books = this.state.books.map(book => {
@@ -64,7 +93,7 @@ class BooksContainer extends Component {
         return (
             <div>
                 <section>
-                    <Search handleInputChange={this.handleInputChange} />
+                    <Search handleInputChange={this.handleInputChange} submitSearch={this.submitSearch} />
                 </section>
                 <section className="Books row justify-content-center">
                     {books}

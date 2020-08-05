@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import BookCard from '../components/bookCard/bookCard'
+import SavedBookCard from '../components/bookCard/savedBookCard'
 import API from '../utils/API'
 
 class SavedBooks extends Component {
@@ -10,7 +10,7 @@ class SavedBooks extends Component {
     componentDidMount() {
             API.getSavedBooks()
                 .then(response => {
-                    console.log(response);
+                    // console.log(response);
                     this.setState({
                         savedBooks: response.data
                     })
@@ -18,9 +18,9 @@ class SavedBooks extends Component {
         }
 
     render() {
-        console.log(this.state.savedBooks);
+        // console.log(this.state.savedBooks);
         const books = this.state.savedBooks.map(book => {
-            return <BookCard
+            return <SavedBookCard
                 key={book._id}
                 title={book.title}
                 author={book.authors}

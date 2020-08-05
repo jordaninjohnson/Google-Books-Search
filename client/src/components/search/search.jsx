@@ -9,7 +9,7 @@ function Search(props) {
                     <input onChange={props.handleInputChange} type="title" className="form-control" id="titleSearch" aria-describedby="title" />
                     <small id="titleHelp" className="form-text text-muted">Enter a book title.</small>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" onClick={props.submitSearch} className="btn btn-primary">Submit</button>
             </form>
         </div>
     );
