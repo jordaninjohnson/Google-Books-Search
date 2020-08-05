@@ -5,7 +5,8 @@ const logger = require("morgan");
 const path = require("path");
 const cors = require("cors");
 const app = express();
-
+require('dotenv').config();
+// console.log(process.env);
 const PORT = process.env.PORT || 3001;
 
 //setting up Mongodb
@@ -38,11 +39,11 @@ const apiRouter = require("./routes/api.js");
 app.use('/api', apiRouter);
 
 // Define any API routes before this runs
-app.get("*", function(req, res) {
-  res.json("hello");
-  // Send every request to the React app
-  //res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
+// app.get("*", function(req, res) {
+//   res.json("hello");
+//   // Send every request to the React app
+//   //res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// });
 
 app.listen(PORT, function() {
   console.log(`🌎 ==> API server now on port ${PORT}!`);

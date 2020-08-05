@@ -23,10 +23,14 @@
     "axios": "^0.19.2",
     "cors": "^2.8.5",
     "dot-prop": ">=5.1.1",
+    "dotenv": "^8.2.0",
     "express": "^4.16.3",
     "if-env": "^1.0.4",
     "mongojs": "^3.1.0",
     "mongoose": "^5.9.27",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "react": "^16.13.1",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0"
   }
 }

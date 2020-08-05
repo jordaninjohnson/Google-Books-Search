@@ -1,26 +1,21 @@
 import React, { Component } from "react";
-import Header from './components/header/header'
-import Search from './components/search/search'
-import Navbar from './components/navbar/navbar'
-import BooksContainer from "./containers/booksContainer";
+import {BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import Homepage from "./pages/homePage"
+import Saved from "./pages/saved"
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <section>
-          <Navbar />
-        </section>
-        <section>
-          <Header />
-        </section>
-        <section>
-          <Search />
-        </section>
-        <section>
-          <BooksContainer />
-        </section>
-      </div>
+      <Router>
+        <Switch>
+          <Route exact path='/'>
+            <Homepage />
+          </Route>
+          <Route path='/savedBooks'>
+            <Saved />
+          </Route>
+        </Switch>
+      </Router>
     );
   }
 }

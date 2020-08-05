@@ -1,9 +1,10 @@
 const router = require("express").Router();
 const Book = require("../bookModel");
 
-router.get("/", (req, res) => {
-    Book.find()
+router.get("/add", (req, res) => {
+    Book.find({})
         .then(dbBook => {
+            console.log(dbBook);
             res.json(dbBook);
         })
         .catch(err => {
@@ -13,11 +14,13 @@ router.get("/", (req, res) => {
 
 router.route('/add').post((req, res) => {
     console.log(req.body);
-    const title = req.body.publisher
-    const authors = req.body.subtitle
-    const description =req.body.description
-    const image = req.body.id
-    const newBook = new Book ({
+    const id = req.body._id
+    const title = req.body.volumeInfo.title
+    const authors = req.body.volumeInfo.authors[0]
+    const description = req.body.volumeInfo.description
+    const image = req.body.volumeInfo.imageLinks.thumbnail
+    const newBook = new Book({
+        id,
         title,
         authors,
         description,
@@ -31,14 +34,7 @@ router.route('/add').post((req, res) => {
             res.status(400).send("Bad")
             // res.status(400).json('Error: ' + err)
         }
-            )
-    // Book.create(body)
-    //     .then(() => {
-    //         res.json('user Added');
-    //     })
-    //     .catch(err => {
-    //         res.status(400).json(err);
-    //     });
+        )
 });
 
 module.exports = router;
